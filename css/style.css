@@ -1,0 +1,409 @@
+/* --- Estilos Globales y Variables --- */
+:root {
+    --primary-color: #c9a96e; /* Dorado/Elegante de tu nuevo diseño */
+    --dark-color: #1a1a1a;
+    --light-color: #f9f6f2;
+    --text-color: #333333;
+    --subtle-bg-color: #ece6de;
+    --accent-color: #4a5f7a;
+    --card-bg: rgba(26, 26, 26, 0.8); /* Para la página de membresía */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: var(--text-color);
+    line-height: 1.6;
+    opacity: 0; /* Para la transición de entrada */
+    transition: opacity 1s ease-in-out;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+}
+
+/* --- Header y Navegación (Compartido) --- */
+header {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--subtle-bg-color);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo-container img {
+    max-width: 150px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    color: var(--dark-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.language-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.lang-btn:hover, .lang-btn.active {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+}
+
+/* --- Estilos de tu Página de Inicio (index.html) --- */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/imagen_panoramica_puerto.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin-top: 70px; /* Para evitar el header fijo */
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-logo {
+    max-width: 350px;
+    width: 90%;
+    height: auto;
+    margin-bottom: 1rem;
+    filter: drop-shadow(2px 2px 8px rgba(0,0,0,0.7));
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+    margin-top: 0;
+}
+
+.story, .intro, .pillars, .experiences, .pricing, .legacy, .invitation {
+    text-align: center;
+}
+
+.story h2, .intro h2, .pricing h2, .legacy h2, .invitation h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.story p, .intro p {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    font-size: 1.1rem;
+    color: #555;
+    font-style: italic;
+}
+
+.story .highlight, .invitation .highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-style: normal;
+}
+
+.pillars-grid, .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.pillar-card, .pricing-card {
+    background-color: #fdfdfd;
+    padding: 40px;
+    border: 1px solid var(--subtle-bg-color);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pillar-card:hover, .pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.pillar-card .icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.pillar-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 20px 0;
+}
+
+.price-note {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.legacy {
+    background: linear-gradient(rgba(26, 26, 26, 0.7), rgba(26, 26, 26, 0.7)), url('images/villa_luxe.jpg') no-repeat center center/cover;
+    color: white;
+}
+
+.legacy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.legacy-text h2 {
+    color: white;
+}
+
+.legacy-features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.legacy-features li {
+    margin-bottom: 10px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.legacy-features li::before {
+    content: '◈';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+}
+
+.price-offer-box {
+    margin-top: 30px;
+    padding: 25px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background-color: rgba(201, 169, 110, 0.1);
+    text-align: center;
+}
+
+.price-offer-box .price-range {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 10px 0;
+}
+
+.legacy-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 30px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.legacy-button:hover {
+    background-color: #b3995f;
+    transform: translateY(-2px);
+}
+
+.invitation {
+    background: linear-gradient(rgba(0, 77, 77, 0.8), rgba(0, 77, 77, 0.8)), url('https://images.unsplash.com/photo-1540202404-1b927e55fa93?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    color: white;
+}
+
+/* --- Estilos de tu Página de Membresía (membresia.html) --- */
+.membership-hero {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 120px 0 80px 0; /* Más padding arriba por el header fijo */
+}
+
+.membership-hero h1 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+}
+
+.membership-hero p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--light-color);
+}
+
+.memberships {
+    background-color: var(--light-color);
+    padding-bottom: 80px;
+}
+
+.membership-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.membership-card {
+    background: #fdfdfd;
+    border: 1px solid var(--subtle-bg-color);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.membership-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card-header h2 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.card-header p {
+    color: #777;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.card-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.card-price span {
+    color: var(--primary-color);
+}
+
+.card-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.card-features li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.card-features li::before {
+    content: '✓';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: bold;
+}
+
+/* --- Footer (Compartido) --- */
+footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero-logo { max-width: 280px; }
+    .hero-content p { font-size: 1.2rem; }
+    .experiences-grid, .legacy-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 0; }
+    .membership-hero h1 { font-size: 2.5rem; }
+}
